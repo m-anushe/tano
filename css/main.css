@@ -639,6 +639,31 @@ h6 {
   outline: none; /* Remove a borda de foco padrão */
 }
 
+
+.butonesa {
+  background-color: #240046;
+  color: white;
+  border: 2px solid #D325A5;
+  border-radius: 20px;
+  margin-left: 340px;
+  margin-top:-18rem;
+}
+
+.butonesa:hover,
+.butonesa:focus,
+.butonesa:active {
+  background-color: #240046;
+  border: 2px solid #D325A5;
+  outline: none; /* Remove a borda de foco padrão */
+}
+
+
+
+
+
+
+
+
 /* botão para editar perfil*/
 .btn-outline-primary {
   margin-top:5rem;
@@ -739,6 +764,19 @@ h6 {
 #searching::placeholder {
   color: #fff;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1992,4 +2030,49 @@ h6 {
     
     .galleria .galleria-item:hover img {
       transform: scale(1.1);
+    }
+
+
+
+    #searching {
+      margin-left:1.7rem;
+    }
+
+
+
+
+
+
+
+
+
+
+    .delete-account-container {
+      background-color: #240046;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      margin: 100px auto;
+    }
+    .delete-account-container h2 {
+      margin-bottom: 20px;
+    }
+    .delete-account-container .btn {
+      background-color: #D325A5;
+      border: none;
+      color: white;
+
+      margin: 105px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      width: 35rem;
+      height: 3rem;
+      margin-left:-7rem;
+      margin-top:-5rem;
+    }
+    .delete-account-container .btn:hover {
+      background-color: #a3007e;
     }

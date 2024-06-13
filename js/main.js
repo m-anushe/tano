@@ -311,20 +311,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const input = document.getElementById("searching");
-  const items = document.querySelectorAll(".galleria-item");
 
-  input.addEventListener("input", function() {
-    const searchTerm = input.value.trim().toLowerCase();
 
-    items.forEach(function(item) {
-      const title = item.getAttribute("data-title").toLowerCase();
-      if (title.includes(searchTerm)) {
-        item.style.display = "block";
-      } else {
-        item.style.display = "none";
-      }
-    });
-  });
-});
+

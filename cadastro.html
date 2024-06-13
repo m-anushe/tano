@@ -4,12 +4,11 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+      <!--=============== REMIXICONS ===============-->
       <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-  
-      <link rel="stylesheet" href="assetes/css/styles.css">
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assetes/css/style.css">
 
       <title> login</title>
    </head>
@@ -18,9 +17,25 @@
          <img src="assetes/img/wp9494987.webp" alt="login image" class="login__img">
 
          <form action="" class="login__form">
-            <h1 class="login__title">Welcome to Tanoshi!</h1>
+            <h1 class="login__title">Register</h1>
+
+
+
 
             <div class="login__content">
+
+
+               <div class="login__box">
+                  <i class="ri-user-3-line login__icon"></i>
+
+                  <div class="login__box-input">
+                     <input required class="login__input" id="login-email" placeholder=" ">
+                     <label for="login-email" class="login__label">Name</label>
+                  </div>
+               </div>
+
+
+
                <div class="login__box">
                   <i class="ri-mail-line"></i>
 
@@ -29,6 +44,8 @@
                      <label for="login-email" class="login__label">Email</label>
                   </div>
                </div>
+
+               
 
                <div class="login__box">
                   <i class="ri-lock-2-line login__icon"></i>
@@ -40,23 +57,18 @@
                   </div>
                </div>
             </div>
+
             
-           
+
             <button type="submit" class="login__button">Login</button>
 
-           
-
-
-           
-
-           <p class="login__register">
-            Don't have an account? <a href="cadastro.html">Sign up</a>
-         </p>
-
+            <p class="login__register">
+               Already have an account? <a href="../animated-login-form-main/index.html">Sign in</a>
+            </p>
          </form>
       </div>
       
-      
+      <!--=============== MAIN JS ===============-->
       <script src="assetes/js/main.js"></script>
    </body>
 </html>
