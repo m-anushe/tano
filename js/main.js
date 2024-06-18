@@ -137,99 +137,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-// adiciona um anime à lista local de animes armazenada no navegador, e também uma mensagem
 document.addEventListener('DOMContentLoaded', function() {
-  const addToListBtn = document.getElementById('addToListBtn');
-  const animeTitle = document.getElementById('animeTitle').textContent;
-  const animeCover = document.getElementById('animeCover').src;
 
-  addToListBtn.addEventListener('click', function() {
-    addAnimeToList(animeTitle, animeCover);
-    showNotification('Foi adicionado à sua lista!');
-  });
-
+  // Função para adicionar um anime à lista
   function addAnimeToList(title, cover) {
     let animeList = JSON.parse(localStorage.getItem('animeList')) || [];
-    animeList.push({ title: title, cover: cover });
-    localStorage.setItem('animeList', JSON.stringify(animeList));
+
+    // Verifica se o anime já está na lista
+    const isDuplicate = animeList.some(anime => anime.title === title);
+    if (!isDuplicate) {
+      animeList.push({ title: title, cover: cover });
+      localStorage.setItem('animeList', JSON.stringify(animeList));
+      showNotification('Foi adicionado à sua lista!');
+      displayAnimeList(); // Atualiza a exibição da lista após adicionar um novo anime
+    } else {
+      alert('Este anime já está na sua lista!');
+    }
   }
 
-  function showNotification(message) {
-    alert(message); // alerta para notificação
-    // Você pode substituir por um modal ou um aviso personalizado se preferir!!!!!!!!!!!!!!!!!!!!!!!
-  }
-});
+  // Função para exibir os itens da lista de anime
+  function displayAnimeList() {
+    const animeList = JSON.parse(localStorage.getItem('animeList')) || [];
+    const listContainer = document.getElementById('animeList');
+    listContainer.innerHTML = ''; // Limpa o conteúdo atual da lista
 
+    animeList.forEach((anime, index) => {
+      const listItem = document.createElement('div');
+      listItem.classList.add('anime-item');
 
+      const animeCover = document.createElement('img');
+      animeCover.src = anime.cover;
+      animeCover.alt = anime.title;
+      animeCover.classList.add('anime-cover');
 
+      const animeTitle = document.createElement('p');
+      animeTitle.textContent = anime.title;
+      animeTitle.classList.add('anime-title');
 
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '<i class="bi bi-trash"></i>';
+      deleteBtn.classList.add('delete-btn');
+      deleteBtn.addEventListener('click', function() {
+        removeAnimeFromList(index);
+      });
 
-
-// exibe os itens de anime salvos e permite que o usuário os remova da lista quando desejar
-document.addEventListener('DOMContentLoaded', function() {
-  const animeList = JSON.parse(localStorage.getItem('animeList')) || [];
-  const listContainer = document.getElementById('animeList');
-
-  animeList.forEach((anime, index) => {
-    const listItem = document.createElement('div');
-    listItem.classList.add('anime-item');
-
-    const animeCover = document.createElement('img');
-    animeCover.src = anime.cover;
-    animeCover.alt = anime.title;
-    animeCover.classList.add('anime-cover');
-
-    const animeTitle = document.createElement('p');
-    animeTitle.textContent = anime.title;
-    animeTitle.classList.add('anime-title');
-
-
-    // botão de exclusão representado por um elemento button
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<i class="bi bi-trash"></i>';
-    deleteBtn.classList.add('delete-btn');
-    deleteBtn.addEventListener('click', function() {
-      removeAnimeFromList(index);
-      listItem.remove();
-      showNotification('Anime removido da lista!');
+      listItem.appendChild(animeCover);
+      listItem.appendChild(animeTitle);
+      listItem.appendChild(deleteBtn);
+      listContainer.appendChild(listItem);
     });
+  }
 
-    // adiciona todos os elementos criados na lista
-    listItem.appendChild(animeCover);
-    listItem.appendChild(animeTitle);
-    listItem.appendChild(deleteBtn);
-    listContainer.appendChild(listItem);
-  });
-
-
-
-
-
-
-
-
-
-
-  // função para remover um anime da lista
+  // Função para remover um anime da lista
   function removeAnimeFromList(index) {
     let animeList = JSON.parse(localStorage.getItem('animeList')) || [];
     animeList.splice(index, 1);
     localStorage.setItem('animeList', JSON.stringify(animeList));
+    displayAnimeList(); // Atualiza a exibição da lista após remover um anime
   }
 
+  // Função para exibir notificações
   function showNotification(message) {
-    alert(message); // alerta para notificação
-    // Você pode substituir por um modal ou um aviso personalizado se preferir!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    alert(message);
   }
+
+  // Event listener para o botão de adicionar à lista
+  const addToListBtn = document.getElementById('addToListBtn');
+  if (addToListBtn) {
+    addToListBtn.addEventListener('click', function() {
+      const animeTitle = document.getElementById('animeTitle').textContent;
+      const animeCover = document.getElementById('animeCover').src;
+      addAnimeToList(animeTitle, animeCover);
+    });
+  }
+
+  // Exibe a lista de animes ao carregar a página
+  displayAnimeList();
+
 });
-
-
-
 
 
 
